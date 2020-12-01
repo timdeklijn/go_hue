@@ -47,6 +47,7 @@ func parseLightResponse(resp http.Response) Light {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println(string(body))
 	var light Light
 	json.Unmarshal(body, &light)
 	return light
@@ -102,9 +103,7 @@ func listLightInfo(client http.Client) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println("Parsing Body")
-	light := parseLightResponse(*resp)
-	fmt.Println(light)
+	parseLightResponse(*resp)
 }
 
 func main() {
